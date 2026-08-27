@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class GameLoading : MonoBehaviour
 {
     public List<LevelDTO> LevelDTOs;
-    GameData gameData;
+    GameData gameData = new GameData();
 
     Player _playerPrefab;
     Enemy _enemyPrefab;
@@ -21,7 +22,7 @@ public class GameLoading : MonoBehaviour
     {
         return _enemyPrefab;
     }
-    
+
     public GameObject GetObstaclePrefabs(string name)
     {
         return _obstaclePrefab;
@@ -31,10 +32,10 @@ public class GameLoading : MonoBehaviour
     {
         return _starPrefab;
     }
-    
+
     public void LoadData()
     {
-        TextAsset textData = Resources.Load<TextAsset>("Data/leveldata");
+        TextAsset textData = Resources.Load<TextAsset>("Data/LevelData");
         if (textData is not null)
         {
             gameData = JsonUtility.FromJson<GameData>(textData.text);
@@ -45,38 +46,60 @@ public class GameLoading : MonoBehaviour
         _enemyPrefab = Resources.Load<Enemy>("Prefabs/Enemy");
         _obstaclePrefab = Resources.Load<GameObject>("Prefabs/Obstacle");
         _starPrefab = Resources.Load<CollectableStar>("Prefabs/Star");
-
-        Debug.Log(1);
-        Debug.Log(_enemyPrefab.name);
-
     }
 
     public void ExportData()
     {
         Deprocessing();
-
         string json = JsonUtility.ToJson(gameData, true);
         string savePath = "Data/GameSavedData.json";
+        if (!Directory.Exists(Path.GetDirectoryName(savePath)))
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(savePath));
+        }
         File.WriteAllText(savePath, json);
     }
 
     void DataProcessing()
     {
-        foreach (var item in gameData.LevelDatas)
+        LevelDTOs = new List<LevelDTO>();
+        int id = 0;
+        foreach (var data in gameData.LevelDatas)
         {
-
+            if (id < data.Level)
+            {
+                id += 1;
+                LevelDTOs.Add(new LevelDTO());
+            }
+            if (Enum.TryParse(data.Type, true, out DataType type))
+            {
+                switch (type)
+                {
+                    case DataType.Enemy: LevelDTOs[id - 1].Monster.Add(new MonsterDTO(data)); break;
+                    case DataType.Obstacle: LevelDTOs[id - 1].Obstacle.Add(new ObstacleDTO(data)); break;
+                    case DataType.Star: LevelDTOs[id - 1].Star.Add(new StarDTO(data)); break;
+                }
+            }
         }
     }
-        
+
     void Deprocessing()
     {
         gameData.LevelDatas = new List<LevelData>();
-        foreach(LevelDTO item in LevelDTOs)
+        foreach (LevelDTO item in LevelDTOs)
         {
-            foreach(MonsterDTO monster in item.Monster)
+            foreach (MonsterDTO monster in item.Monster)
             {
-                gameData.LevelDatas.Add(new LevelData(item.Level, DataType.Enemy, monster.Name, monster.SpawnX, monster.SpawnY) );
+                gameData.LevelDatas.Add(new LevelData(item.Level, DataType.Enemy, monster.Name, monster.SpawnX, monster.SpawnY));
+            }
+            foreach (ObstacleDTO obstacle in item.Obstacle)
+            {
+                gameData.LevelDatas.Add(new LevelData(item.Level, DataType.Obstacle, obstacle.Name, obstacle.SpawnX, obstacle.SpawnY));
+            }
+            foreach (StarDTO star in item.Star)
+            {
+                gameData.LevelDatas.Add(new LevelData(item.Level, DataType.Star, star.Name, star.SpawnX, star.SpawnY));
             }
         }
-    }    
+    }
 }

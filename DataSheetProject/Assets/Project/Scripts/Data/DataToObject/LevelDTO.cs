@@ -9,4 +9,11 @@ public class LevelDTO : ScriptableObject
     public List<MonsterDTO> Monster;
     public List<ObstacleDTO> Obstacle;
     public List<StarDTO> Star;
+
+    public LevelDTO()
+    {
+        Monster = new List<MonsterDTO>();
+        Obstacle = new List<ObstacleDTO>();
+        Star = new List<StarDTO>();
+    }
 }

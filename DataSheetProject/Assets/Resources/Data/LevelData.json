@@ -1,0 +1,81 @@
+{
+    "LevelDatas": [
+        {
+            "Level": 1,
+            "Type": "Enemy",
+            "Name": "Enemy",
+            "SpawnPositionX": -10.0,
+            "SpawnPositionY": 0.0
+        },
+        {
+            "Level": 1,
+            "Type": "Enemy",
+            "Name": "Enemy",
+            "SpawnPositionX": 10.0,
+            "SpawnPositionY": 0.0
+        },
+        {
+            "Level": 2,
+            "Type": "Enemy",
+            "Name": "Enemy",
+            "SpawnPositionX": -10.0,
+            "SpawnPositionY": 0.0
+        },
+        {
+            "Level": 2,
+            "Type": "Enemy",
+            "Name": "Enemy",
+            "SpawnPositionX": 10.0,
+            "SpawnPositionY": 0.0
+        },
+        {
+            "Level": 2,
+            "Type": "Enemy",
+            "Name": "Enemy",
+            "SpawnPositionX": 0.0,
+            "SpawnPositionY": 10.0
+        },
+        {
+            "Level": 3,
+            "Type": "Enemy",
+            "Name": "Enemy",
+            "SpawnPositionX": -10.0,
+            "SpawnPositionY": 0.0
+        },
+        {
+            "Level": 3,
+            "Type": "Enemy",
+            "Name": "Enemy",
+            "SpawnPositionX": 10.0,
+            "SpawnPositionY": 0.0
+        },
+        {
+            "Level": 3,
+            "Type": "Enemy",
+            "Name": "Enemy",
+            "SpawnPositionX": 0.0,
+            "SpawnPositionY": 10.0
+        },
+        {
+            "Level": 3,
+            "Type": "Enemy",
+            "Name": "Enemy",
+            "SpawnPositionX": 10.0,
+            "SpawnPositionY": -10.0
+        },
+        {
+            "Level": 3,
+            "Type": "Enemy",
+            "Name": "Enemy",
+            "SpawnPositionX": 10.0,
+            "SpawnPositionY": 10.0
+        },
+        {
+            "Level": 3,
+            "Type": "Enemy",
+            "Name": "Enemy",
+            "SpawnPositionX": -10.0,
+            "SpawnPositionY": -10.0
+        }
+    ]
+}

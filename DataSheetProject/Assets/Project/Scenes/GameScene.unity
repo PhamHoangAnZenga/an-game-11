@@ -1451,7 +1451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99988d6b254ee4c678d9ae463185c6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
-  _cameraController: {fileID: 0}
+  _cameraController: {fileID: 527066455}
   _gameLoader: {fileID: 8888296362436215241}
   _joystick: {fileID: 915727128}
   _player: {fileID: 1902008837}
@@ -1467,10 +1467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac108ca6ea62840b1b3bf20e70b726ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameLoadingData
-  LevelDTOs:
-  - {fileID: 11400000, guid: 3818d61c83ef34ca1bdb359866e04687, type: 2}
-  - {fileID: 11400000, guid: ca40e79f051774cb194431f4e213cbb4, type: 2}
-  - {fileID: 11400000, guid: b57f7d20641ef44b0865748a593dc3a2, type: 2}
+  LevelDTOs: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
