@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameLoading : MonoBehaviour
 {
     public List<LevelDTO> LevelDTOs;
+    public List<LevelDTO> InputLevelDTOs;
     GameData gameData = new GameData();
 
     Player _playerPrefab;
@@ -52,7 +53,7 @@ public class GameLoading : MonoBehaviour
     {
         Deprocessing();
         string json = JsonUtility.ToJson(gameData, true);
-        string savePath = "Data/GameSavedData.json";
+        string savePath = "Data/LevelData.json";
         if (!Directory.Exists(Path.GetDirectoryName(savePath)))
         {
             Directory.CreateDirectory(Path.GetDirectoryName(savePath));
@@ -86,7 +87,7 @@ public class GameLoading : MonoBehaviour
     void Deprocessing()
     {
         gameData.LevelDatas = new List<LevelData>();
-        foreach (LevelDTO item in LevelDTOs)
+        foreach (LevelDTO item in InputLevelDTOs)
         {
             foreach (MonsterDTO monster in item.Monster)
             {

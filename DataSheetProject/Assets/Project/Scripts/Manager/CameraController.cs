@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
         _target = target;
     }
     
-    void LateUdpate()
+    void LateUpdate()
     {
         transform.position = _target.position;
     }

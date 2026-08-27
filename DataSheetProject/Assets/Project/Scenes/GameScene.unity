@@ -729,7 +729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1381955303
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1468,6 +1468,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameLoadingData
   LevelDTOs: []
+  InputLevelDTOs:
+  - {fileID: 11400000, guid: 3818d61c83ef34ca1bdb359866e04687, type: 2}
+  - {fileID: 11400000, guid: ca40e79f051774cb194431f4e213cbb4, type: 2}
+  - {fileID: 11400000, guid: b57f7d20641ef44b0865748a593dc3a2, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

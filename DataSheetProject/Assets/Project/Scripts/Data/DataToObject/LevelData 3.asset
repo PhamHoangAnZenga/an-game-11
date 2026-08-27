@@ -34,9 +34,12 @@ MonoBehaviour:
     SpawnY: -10
   Obstacle: []
   Star:
-  - SpawnX: -20
+  - Name: Star
+    SpawnX: -20
     SpawnY: 0
-  - SpawnX: 0
+  - Name: Star
+    SpawnX: 0
     SpawnY: -20
-  - SpawnX: 10
+  - Name: Star
+    SpawnX: 10
     SpawnY: 10

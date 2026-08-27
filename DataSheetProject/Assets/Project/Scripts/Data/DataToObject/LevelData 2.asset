@@ -43,9 +43,12 @@ MonoBehaviour:
     SpawnX: 15
     SpawnY: -15
   Star:
-  - SpawnX: 20
+  - Name: Star
+    SpawnX: 20
     SpawnY: 10
-  - SpawnX: -20
+  - Name: Star
+    SpawnX: -20
     SpawnY: -10
-  - SpawnX: 20
+  - Name: Star
+    SpawnX: 20
     SpawnY: -10
