@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] Rigidbody _rigidbody;
+    [SerializeField] float _moveSpeed;
 
-    // Update is called once per frame
+    Vector3 _moveDirection;
+    Transform _target;
+
     void Update()
     {
-        
+        _moveDirection = _target.position - transform.position;
+    }
+
+    void FixedUpdate()
+    {
+        _rigidbody.MovePosition(transform.position + _moveDirection.normalized * _moveSpeed * Time.fixedDeltaTime);        
     }
 }
