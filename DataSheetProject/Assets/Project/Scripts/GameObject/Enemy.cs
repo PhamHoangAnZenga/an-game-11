@@ -8,6 +8,11 @@ public class Enemy : MonoBehaviour
     Vector3 _moveDirection;
     Transform _target;
 
+    public void Init(Transform target)
+    {
+        _target = target;
+    }
+    
     void Update()
     {
         _moveDirection = _target.position - transform.position;

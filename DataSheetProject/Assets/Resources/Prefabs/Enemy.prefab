@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   _rigidbody: {fileID: 7274846799993076875}
-  _moveSpeed: 10
+  _moveSpeed: 6
 --- !u!54 &7274846799993076875
 Rigidbody:
   m_ObjectHideFlags: 0

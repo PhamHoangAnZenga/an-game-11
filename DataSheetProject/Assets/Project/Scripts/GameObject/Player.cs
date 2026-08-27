@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 
     Vector3 _moveDirection;
 
-    void Init(Joystick input, float moveSpeed)
+    public void Init(Joystick input, float moveSpeed)
     {
         _joystick = input;
         _moveSpeed = moveSpeed;
