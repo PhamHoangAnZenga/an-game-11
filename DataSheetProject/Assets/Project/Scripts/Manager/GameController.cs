@@ -6,13 +6,17 @@ public class GameController : MonoBehaviour
     public Action OnEndGame;
 
     [SerializeField] CameraController _cameraController;
-    [SerializeField] GameLoading _gameLoader;    
+    [SerializeField] GameLoading _gameLoader;
     [SerializeField] Joystick _joystick;
     [SerializeField] Player _player;
-    [SerializeField] ResultMenuController _resultMenu;
+    [SerializeField] ResultMenuController _resultMenu;    
+    [SerializeField] GameObject _menuCanvas;
+    [SerializeField] GameObject _scoreUI;
+    [SerializeField] GameObject _inputCanvas;
 
     int _starCollected = 0;
     int _currentLevel = 0;
+    float _timer = 0f;
 
     void Awake()
     {
@@ -22,7 +26,25 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        StartLevel(0);
+        Time.timeScale = 0f;
+    }
+
+    public void NewGame()
+    {
+        _currentLevel = 0;
+        _menuCanvas.SetActive(false);
+        _inputCanvas.SetActive(true);
+        StartLevel(_currentLevel);
+    }
+
+    public void OpenScore()
+    {
+        _scoreUI.SetActive(true);
+    }
+    
+    public void CloseScore()
+    {
+        _scoreUI.SetActive(false);
     }
 
     public void NextButton()
@@ -46,15 +68,29 @@ public class GameController : MonoBehaviour
         OnEndGame -= star.OnGameOver;
         if (_starCollected >= 3)
         {
-            Time.timeScale = 0f;    
-            _resultMenu.OpenWinMenu();
+            WinGame();
         }
     }
-    
+
     public void LoseGame()
     {
         Time.timeScale = 0f;
-        _resultMenu.OpenLoseMenu();        
+        _resultMenu.OpenLoseMenu();
+    }
+
+    void WinGame()
+    {
+        Time.timeScale = 0f;
+        _resultMenu.OpenWinMenu();
+
+        int id = _currentLevel % 4;
+        float timer = PlayerPrefs.GetFloat($"Timer{id}");
+
+        if (timer > Time.time - _timer)
+        {
+            PlayerPrefs.SetFloat($"Timer{id}", Time.time - _timer);
+            PlayerPrefs.SetInt($"Score{id}", _starCollected);
+        }
     }
 
     void StartLevel(int level)
@@ -62,6 +98,7 @@ public class GameController : MonoBehaviour
         OnEndGame?.Invoke();
         OnEndGame = null;
         _starCollected = 0;
+        _timer = Time.time;
 
         // _player = Instantiate(_gameLoader.GetPlayerPrefab(), Vector3.up, Quaternion.identity);
         _cameraController.Init(_player.transform);
@@ -88,7 +125,7 @@ public class GameController : MonoBehaviour
             collectableStar.Init(this);
             OnEndGame += collectableStar.OnGameOver;
         }
-        
+
         Time.timeScale = 1f;
     }
 }
