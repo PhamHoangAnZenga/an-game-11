@@ -6,7 +6,7 @@ public class GameController : MonoBehaviour
     public Action OnEndGame;
 
     [SerializeField] CameraController _cameraController;
-    [SerializeField] GameLoading _gameLoader;
+    [SerializeField] GameLoadData _gameLoader;
     [SerializeField] Joystick _joystick;
     [SerializeField] Player _player;
     [SerializeField] ResultMenuController _resultMenu;    

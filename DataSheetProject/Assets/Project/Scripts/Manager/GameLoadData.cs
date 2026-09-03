@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class GameLoading : MonoBehaviour
+public class GameLoadData : MonoBehaviour
 {
     public List<LevelDTO> LevelDTOs;
     public List<LevelDTO> InputLevelDTOs;
