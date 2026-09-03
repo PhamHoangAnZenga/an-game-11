@@ -8,9 +8,16 @@ public class CollectableStar : MonoBehaviour
     {
         _gameController = gameController;
     }
+    
+    public void OnGameOver()
+    {        
+        Destroy(gameObject);
+    }
 
     void OnTriggerEnter(Collider other)
     {
-        _gameController.CollectStar();
+        _gameController.CollectStar(this);
+        Destroy(gameObject);
     }
+
 }
